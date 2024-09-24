@@ -33,7 +33,7 @@
             margin: 10px 0 5px;
             font-weight: bold;
         }
-        input[type="text"] {
+        input[type="text"], input[type="password"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -60,47 +60,15 @@
     <div class="container">
         <h1>Login Empleado</h1>
         <form id="loginEmpleadoForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
 
-            <label for="id_empleado">ID Empleado:</label>
-            <input type="text" id="id_empleado" name="id_empleado" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
 
             <button type="submit">Iniciar sesión</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('loginEmpleadoForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evitar el envío del formulario por defecto
-
-            // Obtener datos del formulario
-            const nombre = document.getElementById('nombre').value;
-            const id_empleado = document.getElementById('id_empleado').value;
-
-            // Enviar solicitud al servidor para verificar los datos del empleado
-            fetch('/login_empleados', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nombre, id_empleado })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.existe) {
-                    // Redirigir a la página de clientes del empleado y pasar el ID del empleado
-                    window.location.href = `/clientes_empleado.html?id_empleado=${id_empleado}`;
-                } else {
-                    alert('Empleado no encontrado');
-                }
-            })
-            .catch(error => {
-                console.error('Error en el login del empleado:', error);
-            });
-        });
-    </script>
     <script src="../js/login_empleados.js"></script>
-
 </body>
 </html>

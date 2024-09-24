@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Obtener el ID del empleado de la URL
     const params = new URLSearchParams(window.location.search);
     const id_empleado = params.get('id_empleado');
 
+    console.log("ID Empleado desde URL:", id_empleado); // Verifica si el ID se obtiene de la URL
+
+    // Manejar la carga de clientes asignados al empleado
     if (id_empleado) {
-        // Realizar solicitud al servidor para obtener los clientes
         fetch(`/empleados/${id_empleado}/clientes`)
             .then(response => response.json())
             .then(data => {

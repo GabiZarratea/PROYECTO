@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex; /* Usar Flexbox para crear columnas */
+            max-width: 1200px; /* Ancho máximo de la página */
+            margin: 0 auto; /* Centrar el contenedor */
+        }
+
+        .column {
+            flex: 1; /* Hacer que cada columna ocupe el mismo espacio */
+            padding: 20px; /* Espacio interno */
+            box-sizing: border-box; /* Incluir padding en el ancho total */
+        }
+
+        .left {
+            background-color: #e0e0e0; /* Color de fondo para la columna izquierda */
+        }
+
+        .right {
+            background-color: #c0c0c0; /* Color de fondo para la columna derecha */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+        <div class="column left">
+            <h2>LEADS</h2>
+            <table id="tablaLeads">
+                <thead>
+                    <tr>
+                        <th>ID CLIENTE:</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>TELEFONO</th>
+                        <th>DNI</th>
+                        <th>METODO DE PAGO</th>
+                        <th>ID VEHICULO</th>
+                        <th>EMPLEADO ASIGNADO</th>
+                </thead>
+                <tbody>
+                    <!-- Aquí se insertarán las filas con los empleados -->
+                </tbody>
+            </table>
+        </div>
+        <div class="column right">
+            <h2>EMPLEADOS</h2>
+            <table id="tablaEmpleados">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Rol</th>
+                        <th>Grupo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se insertarán las filas con los empleados -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+       <script src="../js/gerente.js"></script>
+</body>
+</html>

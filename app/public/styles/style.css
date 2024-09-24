@@ -1,4 +1,41 @@
-.error {
-    color: red;
-    font-size: 0.875em;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex; /* Usar Flexbox para crear columnas */
+    max-width: 1200px; /* Ancho máximo de la página */
+    margin: 0 auto; /* Centrar el contenedor */
+}
+
+.column {
+    flex: 1; /* Hacer que cada columna ocupe el mismo espacio */
+    padding: 20px; /* Espacio interno */
+    box-sizing: border-box; /* Incluir padding en el ancho total */
+}
+
+.left {
+    background-color: #e0e0e0; /* Color de fondo para la columna izquierda */
+}
+
+.right {
+    background-color: #c0c0c0; /* Color de fondo para la columna derecha */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
