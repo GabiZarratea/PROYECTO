@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Empleado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Empleado</h1>
+        <form id="loginEmpleadoForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="id_empleado">ID Empleado:</label>
+            <input type="text" id="id_empleado" name="id_empleado" required>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginEmpleadoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario por defecto
+
+            // Obtener datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const id_empleado = document.getElementById('id_empleado').value;
+
+            // Enviar solicitud al servidor para verificar los datos del empleado
+            fetch('/login_empleados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre, id_empleado })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.existe) {
+                    // Redirigir a la página de clientes del empleado y pasar el ID del empleado
+                    window.location.href = `/clientes_empleado.html?id_empleado=${id_empleado}`;
+                } else {
+                    alert('Empleado no encontrado');
+                }
+            })
+            .catch(error => {
+                console.error('Error en el login del empleado:', error);
+            });
+        });
+    </script>
+    <script src="../js/login_empleados.js"></script>
+
+</body>
+</html>
